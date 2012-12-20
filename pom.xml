@@ -36,6 +36,23 @@
     </build>
 
     <dependencies>
+	<!-- compile dependencies -->
+	<dependency>
+	    <groupId>org.apache.directory.shared</groupId>
+	    <artifactId>shared-ldap-model</artifactId>
+	    <version>1.0.0-M13</version>
+	</dependency>
+	<dependency>
+	    <groupId>com.martiansoftware</groupId>
+	    <artifactId>jsap</artifactId>
+	    <version>2.1</version>
+	</dependency>
+	<dependency>
+	    <groupId>com.google.guava</groupId>
+	    <artifactId>guava</artifactId>
+	    <version>13.0.1</version>
+	</dependency>
+	<!-- test dependencies -->
 	<dependency>
 	    <groupId>junit</groupId>
 	    <artifactId>junit</artifactId>
