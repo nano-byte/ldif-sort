@@ -52,6 +52,12 @@
 	    <artifactId>guava</artifactId>
 	    <version>13.0.1</version>
 	</dependency>
+	<!-- runtime dependencies -->
+	<dependency>
+	    <groupId>org.slf4j</groupId>
+	    <artifactId>slf4j-nop</artifactId>
+	    <version>1.7.2</version>
+	</dependency>
 	<!-- test dependencies -->
 	<dependency>
 	    <groupId>junit</groupId>
