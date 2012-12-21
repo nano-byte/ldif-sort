@@ -65,6 +65,8 @@ public final class CliLdifSort {
 	public String run() throws Exception {
 	    if (shallPrintHelp()) {
 		return usageWithHelp();
+	    } else if (detectedParsingErrors()) {
+		throw new IllegalArgumentException(errorMessageWithUsage());
 	    }
 
 	    throw new UnsupportedOperationException();
@@ -76,6 +78,16 @@ public final class CliLdifSort {
 
 	private String usageWithHelp() {
 	    return usage() + System.lineSeparator() + cliParser.getHelp();
+	}
+
+	private boolean detectedParsingErrors() {
+	    return !parseResult.success();
+	}
+
+	private String errorMessageWithUsage() {
+	    return parseResult.getErrorMessageIterator().next() + System.lineSeparator()
+		    + usage() + System.lineSeparator()
+		    + "Try --help for more information.";
 	}
 
 	private String usage() {
