@@ -13,7 +13,7 @@ public final class PathParser extends StringParser {
 	try {
 	    return Paths.get(string);
 	} catch (final IllegalArgumentException | FileSystemNotFoundException | SecurityException exception) {
-	    throw new ParseException(exception);
+	    throw new ParseException(exception.getLocalizedMessage());
 	}
     }
 }
