@@ -57,25 +57,29 @@ public final class CliLdifSort {
 	//</editor-fold>
 
 	//<editor-fold defaultstate="collapsed" desc="constructor">
-	Program(final String[] cliArguments) throws Exception {
-	    parseResult = tryParse(cliArguments);
-	}
-
-	private JSAPResult tryParse(final String[] arguments) throws IllegalArgumentException {
-	    try {
-		return cliParser.parse(arguments);
-	    } catch (final Exception exception) {
-		throw new IllegalArgumentException(generateHelpMessage(exception.getLocalizedMessage()));
-	    }
+	Program(final String[] cliArguments) {
+	    parseResult = cliParser.parse(cliArguments);
 	}
 	//</editor-fold>
 
 	public String run() throws Exception {
+	    if (shallPrintHelp()) {
+		return usageWithHelp();
+	    }
+
 	    throw new UnsupportedOperationException();
 	}
 
-	private String generateHelpMessage(final String exceptionMessage) {
-	    throw new UnsupportedOperationException();
+	private boolean shallPrintHelp() {
+	    return parseResult.getBoolean(helpOption.getID());
+	}
+
+	private String usageWithHelp() {
+	    return usage() + System.lineSeparator() + cliParser.getHelp();
+	}
+
+	private String usage() {
+	    return "usage: " + programInvocation + " " + cliParser.getUsage();
 	}
     }
 }
