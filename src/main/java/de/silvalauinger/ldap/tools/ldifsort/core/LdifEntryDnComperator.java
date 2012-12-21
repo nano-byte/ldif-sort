@@ -1,4 +1,4 @@
-package de.silvalauinger.ldap.tools.ldifsort;
+package de.silvalauinger.ldap.tools.ldifsort.core;
 
 import com.google.common.collect.Ordering;
 import java.util.Comparator;

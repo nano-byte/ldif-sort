@@ -1,4 +1,4 @@
-package de.silvalauinger.ldap.tools.ldifsort.cli;
+package de.silvalauinger.ldap.tools.ldifsort;
 
 import com.google.common.base.Function;
 import static com.google.common.base.Throwables.propagate;
@@ -10,7 +10,7 @@ import com.martiansoftware.jsap.JSAPResult;
 import com.martiansoftware.jsap.Switch;
 import com.martiansoftware.jsap.UnflaggedOption;
 import com.martiansoftware.jsap.stringparsers.FileStringParser;
-import de.silvalauinger.ldap.tools.ldifsort.LdifEntryDnComperator;
+import de.silvalauinger.ldap.tools.ldifsort.core.LdifEntryDnComperator;
 import java.io.File;
 import static java.util.Arrays.asList;
 import org.apache.directory.shared.ldap.model.ldif.LdapLdifException;
