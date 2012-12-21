@@ -37,8 +37,8 @@ public final class CliLdifSort {
 	//<editor-fold defaultstate="collapsed" desc="statics">
 	private final static String programName = "ldifsort";
 	private final static String programInvocation = "java -jar " + programName + ".jar";
-	private final static Switch reverseOption = new Switch("reverse", 'r', "Reverses the sort order.");
-	private final static Switch helpOption = new Switch("help", 'h', "Shows this help message.");
+	private final static Switch reverseOption = new Switch("reverse", 'r', "reverse", "Reverses the sort order.");
+	private final static Switch helpOption = new Switch("help", 'h', "help", "Shows this help message.");
 	private final static UnflaggedOption filesOption = new UnflaggedOption("ldifFile", new PathParser(), null, true, true, "The LDIF files to sort.");
 	private final static JSAP cliParser = new JSAP();
 
