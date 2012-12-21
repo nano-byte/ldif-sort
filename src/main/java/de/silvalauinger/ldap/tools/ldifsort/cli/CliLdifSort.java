@@ -78,7 +78,11 @@ public final class CliLdifSort {
 		throw new IllegalArgumentException(errorMessageWithUsage());
 	    }
 
-	    return ldifEntriesToString(sortLdifEntries());
+	    if (reverseSort()) {
+		return ldifEntriesToString(sortLdifEntries().reverse());
+	    } else {
+		return ldifEntriesToString(sortLdifEntries());
+	    }
 	}
 
 	private boolean shallPrintHelp() {
@@ -101,6 +105,10 @@ public final class CliLdifSort {
 	    return parseResult.getErrorMessageIterator().next() + System.lineSeparator()
 		    + usage() + System.lineSeparator()
 		    + "Try --help for more information." + System.lineSeparator();
+	}
+
+	private boolean reverseSort() {
+	    return parseResult.getBoolean(reverseOption.getID());
 	}
 
 	private ImmutableList<LdifEntry> sortLdifEntries() {
