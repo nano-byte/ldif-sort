@@ -1,12 +1,21 @@
 package de.silvalauinger.ldap.tools.ldifsort.cli;
 
+import com.google.common.base.Function;
 import static com.google.common.base.Throwables.propagate;
+import static com.google.common.collect.FluentIterable.from;
+import com.google.common.collect.ImmutableList;
 import com.martiansoftware.jsap.JSAP;
 import com.martiansoftware.jsap.JSAPException;
 import com.martiansoftware.jsap.JSAPResult;
 import com.martiansoftware.jsap.Switch;
 import com.martiansoftware.jsap.UnflaggedOption;
-import de.silvalauinger.ldap.tools.ldifsort.cli.parse.PathParser;
+import com.martiansoftware.jsap.stringparsers.FileStringParser;
+import de.silvalauinger.ldap.tools.ldifsort.LdifEntryDnComperator;
+import java.io.File;
+import static java.util.Arrays.asList;
+import org.apache.directory.shared.ldap.model.ldif.LdapLdifException;
+import org.apache.directory.shared.ldap.model.ldif.LdifEntry;
+import org.apache.directory.shared.ldap.model.ldif.LdifReader;
 import static org.apache.directory.shared.util.Strings.isNotEmpty;
 
 public final class CliLdifSort {
@@ -15,11 +24,11 @@ public final class CliLdifSort {
 	try {
 	    final String programOutput = new Program(arguments).run();
 	    if (isNotEmpty(programOutput)) {
-		System.out.println(programOutput);
+		System.out.print(programOutput);
 	    }
 	    exitWithoutError();
 	} catch (final Exception exception) {
-	    System.err.println(exception.getLocalizedMessage());
+	    System.err.print(exception.getCause() == null ? exception.getLocalizedMessage() : exception.getCause().getLocalizedMessage());
 	    exitWithError();
 	}
     }
@@ -39,7 +48,7 @@ public final class CliLdifSort {
 	private final static String programInvocation = "java -jar " + programName + ".jar";
 	private final static Switch reverseOption = new Switch("reverse", 'r', "reverse", "Reverses the sort order.");
 	private final static Switch helpOption = new Switch("help", 'h', "help", "Shows this help message.");
-	private final static UnflaggedOption filesOption = new UnflaggedOption("ldifFile", new PathParser(), null, true, true, "The LDIF files to sort.");
+	private final static UnflaggedOption filesOption = new UnflaggedOption("ldifFile", FileStringParser.getParser(), null, true, true, "The LDIF files to sort.");
 	private final static JSAP cliParser = new JSAP();
 
 	static {
@@ -69,7 +78,7 @@ public final class CliLdifSort {
 		throw new IllegalArgumentException(errorMessageWithUsage());
 	    }
 
-	    throw new UnsupportedOperationException();
+	    return ldifEntriesToString(sortLdifEntries());
 	}
 
 	private boolean shallPrintHelp() {
@@ -80,6 +89,10 @@ public final class CliLdifSort {
 	    return usage() + System.lineSeparator() + cliParser.getHelp();
 	}
 
+	private String usage() {
+	    return "usage: " + programInvocation + " " + cliParser.getUsage();
+	}
+
 	private boolean detectedParsingErrors() {
 	    return !parseResult.success();
 	}
@@ -87,11 +100,28 @@ public final class CliLdifSort {
 	private String errorMessageWithUsage() {
 	    return parseResult.getErrorMessageIterator().next() + System.lineSeparator()
 		    + usage() + System.lineSeparator()
-		    + "Try --help for more information.";
+		    + "Try --help for more information." + System.lineSeparator();
 	}
 
-	private String usage() {
-	    return "usage: " + programInvocation + " " + cliParser.getUsage();
+	private ImmutableList<LdifEntry> sortLdifEntries() {
+	    return from(asList(parseResult.getFileArray(filesOption.getID()))).transformAndConcat(new Function<File, Iterable<LdifEntry>>() {
+		@Override
+		public Iterable<LdifEntry> apply(final File ldif) {
+		    try {
+			return new LdifReader(ldif);
+		    } catch (final LdapLdifException exception) {
+			throw propagate(exception);
+		    }
+		}
+	    }).toSortedImmutableList(new LdifEntryDnComperator());
+	}
+
+	private static String ldifEntriesToString(final Iterable<LdifEntry> ldifEntries) {
+	    final StringBuilder concatedLdifEntries = new StringBuilder();
+	    for (final LdifEntry ldifEntry : ldifEntries) {
+		concatedLdifEntries.append(ldifEntry);
+	    }
+	    return concatedLdifEntries.toString();
 	}
     }
 }
