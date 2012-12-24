@@ -10,7 +10,7 @@ import com.martiansoftware.jsap.JSAPResult;
 import com.martiansoftware.jsap.Switch;
 import com.martiansoftware.jsap.UnflaggedOption;
 import com.martiansoftware.jsap.stringparsers.FileStringParser;
-import de.silvalauinger.ldap.tools.ldifsort.core.LdifEntryDnComperator;
+import de.silvalauinger.ldap.tools.ldifsort.core.LdifEntryDnComparator;
 import java.io.File;
 import static java.util.Arrays.asList;
 import org.apache.directory.shared.ldap.model.ldif.LdapLdifException;
@@ -121,7 +121,7 @@ public final class CliLdifSort {
 			throw propagate(exception);
 		    }
 		}
-	    }).toSortedImmutableList(new LdifEntryDnComperator());
+	    }).toSortedImmutableList(new LdifEntryDnComparator());
 	}
 
 	private static String ldifEntriesToString(final Iterable<LdifEntry> ldifEntries) {
