@@ -50,6 +50,6 @@ public class HierarchicalDnComparatorTest {
 
     @Test
     public void testCompare() {
-        assertEquals(compareExpectedResult, new HierarchicalDnComparator().compare(left, right));
+        assertEquals(compareExpectedResult, HierarchicalDnComparator.INSTANCE.compare(left, right));
     }
 }

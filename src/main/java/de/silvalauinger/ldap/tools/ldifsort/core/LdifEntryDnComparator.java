@@ -10,7 +10,7 @@ public final class LdifEntryDnComparator implements Comparator<LdifEntry> {
 
     @Override
     public int compare(final LdifEntry left, final LdifEntry right) {
-	return Ordering.from(new HierarchicalDnComparator()).onResultOf(new Function<LdifEntry, Dn>() {
+	return Ordering.from(HierarchicalDnComparator.INSTANCE).onResultOf(new Function<LdifEntry, Dn>() {
 	    @Override
 	    public Dn apply(final LdifEntry input) {
 		return input.getDn();

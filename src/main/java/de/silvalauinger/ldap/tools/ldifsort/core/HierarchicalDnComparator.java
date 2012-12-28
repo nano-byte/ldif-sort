@@ -5,7 +5,9 @@ import static java.lang.Integer.signum;
 import java.util.Comparator;
 import org.apache.directory.shared.ldap.model.name.Dn;
 
-public final class HierarchicalDnComparator implements Comparator<Dn> {
+public enum HierarchicalDnComparator implements Comparator<Dn> {
+
+    INSTANCE;
 
     @Override
     public int compare(final Dn left, final Dn right) {

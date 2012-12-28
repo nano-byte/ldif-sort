@@ -24,7 +24,7 @@ public class LdifSortCommand implements Command<ImmutableList<LdifEntry>> {
 
     @Override
     public ImmutableList<LdifEntry> execute() throws CommandException {
-	return from(new HierarchicalDnComparator()).onResultOf(new Function<LdifEntry, Dn>() {
+	return from(HierarchicalDnComparator.INSTANCE).onResultOf(new Function<LdifEntry, Dn>() {
 	    @Override
 	    public Dn apply(final LdifEntry toSort) {
 		return toSort.getDn();
