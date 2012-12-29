@@ -1,6 +1,7 @@
 package de.silvalauinger.ldap.tools.ldifsort.command;
 
 import com.google.common.base.Function;
+import static com.google.common.base.Throwables.propagate;
 import com.google.common.collect.Maps;
 import com.martiansoftware.jsap.JSAP;
 import com.martiansoftware.jsap.JSAPException;
@@ -18,10 +19,14 @@ public abstract class JSAPCommandFactory<TCommandResult> {
     protected JSAPResult parseResult;
     //</editor-fold>
 
-    public JSAPCommandFactory() throws JSAPException {
+    public JSAPCommandFactory() {
 	for (final Association<? extends Parameter, ? extends Function<JSAPResult, ? extends Command<TCommandResult>>> association : argumentCommandAssociations()) {
-	    commands.put(association.getKey(), association.getValue());
-	    cliParser.registerParameter(association.getKey());
+	    try {
+		commands.put(association.getKey(), association.getValue());
+		cliParser.registerParameter(association.getKey());
+	    } catch (final JSAPException exception) {
+		throw propagate(exception);
+	    }
 	}
     }
 
