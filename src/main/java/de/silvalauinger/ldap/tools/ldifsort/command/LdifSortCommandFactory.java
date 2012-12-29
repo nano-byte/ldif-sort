@@ -2,7 +2,6 @@ package de.silvalauinger.ldap.tools.ldifsort.command;
 
 import com.google.common.base.Function;
 import static com.google.common.collect.Lists.newArrayList;
-import com.martiansoftware.jsap.JSAPException;
 import com.martiansoftware.jsap.JSAPResult;
 import com.martiansoftware.jsap.Parameter;
 import com.martiansoftware.jsap.Switch;
@@ -11,6 +10,7 @@ import com.martiansoftware.jsap.stringparsers.FileStringParser;
 import de.silvalauinger.common.command.Association;
 import static de.silvalauinger.common.command.AssociationBuilder.associate;
 import de.silvalauinger.common.command.Command;
+import static java.util.Arrays.asList;
 
 public final class LdifSortCommandFactory extends JSAPCommandFactory<String> {
 
@@ -21,7 +21,7 @@ public final class LdifSortCommandFactory extends JSAPCommandFactory<String> {
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="constructors">
-    public LdifSortCommandFactory() throws JSAPException {
+    public LdifSortCommandFactory() {
     }
     //</editor-fold>
 
@@ -31,17 +31,17 @@ public final class LdifSortCommandFactory extends JSAPCommandFactory<String> {
 	return newArrayList(associate(reverseOption).with(new Function<JSAPResult, LdifEntriesToStringCommand>() {
 	    @Override
 	    public LdifEntriesToStringCommand apply(final JSAPResult parseResult) {
-		throw new UnsupportedOperationException("Not supported yet.");
-	    }
-	}), associate(filesOption).with(new Function<JSAPResult, LdifEntriesToStringCommand>() {
-	    @Override
-	    public LdifEntriesToStringCommand apply(final JSAPResult parseResult) {
-		throw new UnsupportedOperationException("Not supported yet.");
+		return new LdifEntriesToStringCommand(new LdifReverseSortCommand(new LdifFilesReadCommand(asList(parseResult.getFileArray(filesOption.getID())))));
 	    }
 	}), associate(helpOption).with(new Function<JSAPResult, HelpTextCommand>() {
 	    @Override
 	    public HelpTextCommand apply(final JSAPResult parseResult) {
 		return new HelpTextCommand(cliParser);
+	    }
+	}), associate(filesOption).with(new Function<JSAPResult, LdifEntriesToStringCommand>() {
+	    @Override
+	    public LdifEntriesToStringCommand apply(final JSAPResult parseResult) {
+		return new LdifEntriesToStringCommand(new LdifSortCommand(new LdifFilesReadCommand(asList(parseResult.getFileArray(filesOption.getID())))));
 	    }
 	}));
     }
@@ -52,8 +52,7 @@ public final class LdifSortCommandFactory extends JSAPCommandFactory<String> {
 	    return commands.get(helpOption).apply(parseResult);
 	} else if (parsingErrorsDetected()) {
 	    return new ErrorMessageWithUsageTextCommand(cliParser, parseResult);
-	}
-	if (reverseSort()) {
+	} else if (reverseSort()) {
 	    return commands.get(reverseOption).apply(parseResult);
 	} else {
 	    return commands.get(filesOption).apply(parseResult);
