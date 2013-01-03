@@ -53,8 +53,25 @@
 			</manifest>
 		    </archive>
 		    <outputDirectory>${project.build.directory}/dist</outputDirectory>
-		    <workDirectory>${project.build.directory}/assembly/work</workDirectory>
 		</configuration>
+	    </plugin>
+	    <!-- creates the NOTICE file with license information -->
+	    <plugin>
+		<groupId>org.jasig.maven</groupId>
+		<artifactId>maven-notice-plugin</artifactId>
+		<version>1.0.5</version>
+		<configuration>
+		    <outputDir>${project.build.directory}/classes</outputDir>
+		    <noticeTemplate>NOTICE.template</noticeTemplate>
+		</configuration>
+		<executions>
+		    <execution>
+			<phase>process-resources</phase>
+			<goals>
+			    <goal>generate</goal>
+			</goals>
+		    </execution>
+		</executions>
 	    </plugin>
 	</plugins>
     </build>
