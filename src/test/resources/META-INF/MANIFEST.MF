@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: Ldif Sort
+Implementation-Version: 1.0-SNAPSHOT
+Implementation-Vendor-Id: de.silvalauinger.ldap.tools
+Built-By: silval
+Build-Jdk: 1.7.0_09-icedtea
+Created-By: Apache Maven 3.0.4
+Main-Class: de.silvalauinger.ldap.tools.ldifsort.CliLdifSort
+Archiver-Version: Plexus Archiver
+
