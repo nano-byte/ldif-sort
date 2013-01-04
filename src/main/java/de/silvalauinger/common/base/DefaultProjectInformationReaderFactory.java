@@ -14,6 +14,7 @@ public final class DefaultProjectInformationReaderFactory implements Supplier<Pr
     private final static Path MANIFEST_MF_PATH = Paths.get("META-INF/MANIFEST.MF");
     private final static Path COPYING_PATH = Paths.get("COPYING");
     private final static Path AUTHORS_PATH = Paths.get("AUTHORS");
+    private final static String MANIFEST_PROGRAM_NAME_KEY = "Implementation-Title";
     private final static String MANIFEST_VERSION_KEY = "Implementation-Version";
     //</editor-fold>
 
@@ -24,7 +25,7 @@ public final class DefaultProjectInformationReaderFactory implements Supplier<Pr
      * These files are (relative to the project base path):
      * <code>
      * <ul>
-     * <li>META-INF/MANIFEST.MF (must have the attribute "Implementation-Version")</li>
+     * <li>META-INF/MANIFEST.MF (must have attributes "Implementation-Title" and "Implementation-Version")</li>
      * <li>COPYING (must contain the hint to the project license)</li>
      * <li>AUTHORS (must contain every author in a new line)</li>
      * <ul>
@@ -34,6 +35,6 @@ public final class DefaultProjectInformationReaderFactory implements Supplier<Pr
      */
     @Override
     public ProjectInformationReader get() {
-	return new ProjectInformationReader(MANIFEST_MF_PATH, COPYING_PATH, AUTHORS_PATH, MANIFEST_VERSION_KEY);
+	return new ProjectInformationReader(MANIFEST_MF_PATH, COPYING_PATH, AUTHORS_PATH, MANIFEST_PROGRAM_NAME_KEY, MANIFEST_VERSION_KEY);
     }
 }

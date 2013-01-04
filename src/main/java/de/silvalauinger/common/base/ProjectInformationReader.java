@@ -19,14 +19,16 @@ public final class ProjectInformationReader {
     private final Path manifestMfPath;
     private final Path copyingPath;
     private final Path authorsPath;
+    private final String manifestProgramNameKey;
     private final String manifestVersionKey;
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="constructors">
-    public ProjectInformationReader(final Path toManifestMf, final Path toCopying, final Path toAuthors, final String manifestVersionKey) {
+    public ProjectInformationReader(final Path toManifestMf, final Path toCopying, final Path toAuthors, final String manifestProgramNameKey, final String manifestVersionKey) {
 	this.manifestMfPath = checkNotNull(toManifestMf);
 	this.copyingPath = checkNotNull(toCopying);
 	this.authorsPath = checkNotNull(toAuthors);
+	this.manifestProgramNameKey = checkNotNull(manifestProgramNameKey);
 	this.manifestVersionKey = checkNotNull(manifestVersionKey);
     }
     //</editor-fold>
@@ -47,7 +49,25 @@ public final class ProjectInformationReader {
      * {@link ProjectInformationReader#authorsPath}.
      */
     public ProjectInformation read() throws IllegalArgumentException, IOException {
-	return new ProjectInformation(readVersionFromManifest(), readCopying(), readAuthors());
+	return new ProjectInformation(readProgramNameFromManifest(), readVersionFromManifest(), readCopying(), readAuthors());
+    }
+
+    /**
+     * Reads the program name from the attribute
+     * {@link ProjectInformationReader#manifestProgramNameKey} in
+     * {@link ProjectInformationReader#manifestMfPath}.
+     *
+     * @return The current program name.
+     * @throws IllegalArgumentException If
+     * {@link ProjectInformationReader#manifestMfPath} could not be found.
+     * @throws IOException If an I/O exception occurs while reading the
+     * Manifest.
+     */
+    private String readProgramNameFromManifest() throws IllegalArgumentException, IOException {
+	try (final InputStream manifestStream = Resources.getResource(manifestMfPath.toString()).openStream()) {
+	    final Manifest projectManifest = new Manifest(manifestStream);
+	    return projectManifest.getMainAttributes().getValue(manifestProgramNameKey);
+	}
     }
 
     /**

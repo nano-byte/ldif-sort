@@ -14,18 +14,24 @@ import java.util.List;
 public final class ProjectInformation {
 
     //<editor-fold defaultstate="collapsed" desc="attributes">
+    private final String programName;
     private final String version;
     private final String copying;
     private final ImmutableList<String> authors;
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="constructors">
-    public ProjectInformation(final String version, final String copying, final List<String> authors) {
+    public ProjectInformation(final String programName, final String version, final String copying, final List<String> authors) {
+	this.programName = checkNotNull(programName);
 	this.version = checkNotNull(version);
 	this.copying = checkNotNull(copying);
 	this.authors = ImmutableList.copyOf(authors);
     }
     //</editor-fold>
+
+    public String getProgramName() {
+	return programName;
+    }
 
     public String getVersion() {
 	return version;
