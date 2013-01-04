@@ -85,6 +85,20 @@
 		    <excludePackageNames>com.jdotsoft.*</excludePackageNames>
 		</configuration>
 	    </plugin>
+	    <!-- Cobertura -->
+	    <plugin>
+		<groupId>org.codehaus.mojo</groupId>
+		<artifactId>cobertura-maven-plugin</artifactId>
+		<version>2.5.2</version>
+		<configuration>
+		    <encoding>UTF-8</encoding>
+		    <instrumentation>
+			<ignores>
+			    <ignore>com.jdotsoft.*</ignore>
+			</ignores>
+		    </instrumentation>
+		</configuration>
+	    </plugin>
 	</plugins>
     </build>
 
