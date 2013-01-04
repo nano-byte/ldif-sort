@@ -1,4 +1,4 @@
-package de.silvalauinger.ldap.tools.ldifsort.core;
+package de.silvalauinger.ldap.ldifsort.core;
 
 import com.google.common.collect.Ordering;
 import static java.lang.Integer.signum;

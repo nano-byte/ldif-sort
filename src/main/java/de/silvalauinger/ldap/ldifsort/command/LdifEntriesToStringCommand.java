@@ -1,4 +1,4 @@
-package de.silvalauinger.ldap.tools.ldifsort.command;
+package de.silvalauinger.ldap.ldifsort.command;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import de.silvalauinger.common.command.Command;

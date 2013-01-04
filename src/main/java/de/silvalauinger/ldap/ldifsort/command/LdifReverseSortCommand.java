@@ -1,4 +1,4 @@
-package de.silvalauinger.ldap.tools.ldifsort.command;
+package de.silvalauinger.ldap.ldifsort.command;
 
 import com.google.common.collect.ImmutableList;
 import de.silvalauinger.common.command.CommandException;

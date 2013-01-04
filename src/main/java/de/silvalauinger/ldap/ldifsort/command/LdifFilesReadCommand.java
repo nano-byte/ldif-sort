@@ -1,9 +1,9 @@
-package de.silvalauinger.ldap.tools.ldifsort.command;
+package de.silvalauinger.ldap.ldifsort.command;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import de.silvalauinger.common.command.Command;
 import de.silvalauinger.common.command.CommandException;
-import de.silvalauinger.ldap.tools.ldifsort.core.LdifFilesReader;
+import de.silvalauinger.ldap.ldifsort.core.LdifFilesReader;
 import java.io.File;
 import java.util.Iterator;
 import org.apache.directory.shared.ldap.model.ldif.LdapLdifException;

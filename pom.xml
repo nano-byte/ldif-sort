@@ -45,8 +45,8 @@
 			<manifest>
 			    <!-- Use JarClassLoader until http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4648386 is fixed.
 			    Then remove CliLdifSortLauncher and JarClassLoader and just use CliLdifSort instead. -->
-			    <!--mainClass>de.silvalauinger.ldap.tools.ldifsort.CliLdifSortLauncher</mainClass-->
-			    <mainClass>de.silvalauinger.ldap.tools.ldifsort.CliLdifSortLauncher</mainClass>
+			    <!--mainClass>de.silvalauinger.ldap.ldifsort.CliLdifSortLauncher</mainClass-->
+			    <mainClass>de.silvalauinger.ldap.ldifsort.CliLdifSortLauncher</mainClass>
 			    <classpathPrefix>lib</classpathPrefix>
 			    <addClasspath>true</addClasspath>
 			    <addDefaultImplementationEntries>true</addDefaultImplementationEntries>

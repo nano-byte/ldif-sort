@@ -1,4 +1,4 @@
-package de.silvalauinger.ldap.tools.ldifsort.command;
+package de.silvalauinger.ldap.ldifsort.command;
 
 import com.google.common.base.Function;
 import static com.google.common.base.Throwables.propagate;

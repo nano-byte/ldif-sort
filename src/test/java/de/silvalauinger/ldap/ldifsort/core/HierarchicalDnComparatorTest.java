@@ -1,4 +1,4 @@
-package de.silvalauinger.ldap.tools.ldifsort.core;
+package de.silvalauinger.ldap.ldifsort.core;
 
 import static com.google.common.collect.Lists.newArrayList;
 import java.util.List;

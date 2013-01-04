@@ -1,4 +1,4 @@
-package de.silvalauinger.ldap.tools.ldifsort;
+package de.silvalauinger.ldap.ldifsort;
 
 import com.jdotsoft.jarloader.JarClassLoader;
 
@@ -13,6 +13,6 @@ public class CliLdifSortLauncher {
 
     public static void main(final String[] cliArguments) throws Throwable {
 	JarClassLoader jcl = new JarClassLoader();
-	jcl.invokeMain("de.silvalauinger.ldap.tools.ldifsort.CliLdifSort", cliArguments);
+	jcl.invokeMain("de.silvalauinger.ldap.ldifsort.CliLdifSort", cliArguments);
     }
 }

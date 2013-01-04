@@ -1,4 +1,4 @@
-package de.silvalauinger.ldap.tools.ldifsort.core;
+package de.silvalauinger.ldap.ldifsort.core;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSet.Builder;

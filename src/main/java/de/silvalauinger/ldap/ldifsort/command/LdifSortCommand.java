@@ -1,11 +1,11 @@
-package de.silvalauinger.ldap.tools.ldifsort.command;
+package de.silvalauinger.ldap.ldifsort.command;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Ordering;
 import de.silvalauinger.common.command.Command;
 import de.silvalauinger.common.command.CommandException;
-import de.silvalauinger.ldap.tools.ldifsort.core.LdifEntryHierarchicalDnComparator;
+import de.silvalauinger.ldap.ldifsort.core.LdifEntryHierarchicalDnComparator;
 import org.apache.directory.shared.ldap.model.ldif.LdifEntry;
 
 public class LdifSortCommand implements Command<ImmutableList<LdifEntry>> {
