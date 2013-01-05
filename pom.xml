@@ -19,6 +19,8 @@
     <properties>
 	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	<project.build.javaVersion>1.7</project.build.javaVersion>
+	<project.src.main>${basedir}/src/main</project.src.main>
+	<project.src.test>${basedir}/src/test</project.src.test>
     </properties>
 
     <build>
@@ -39,7 +41,7 @@
 		<version>2.4</version>
 		<configuration>
 		    <descriptors>
-			<descriptor>src/main/assembly/dist.xml</descriptor>
+			<descriptor>${project.src.main}/assembly/dist.xml</descriptor>
 		    </descriptors>
 		    <archive>
 			<manifest>
@@ -100,6 +102,27 @@
 		</configuration>
 	    </plugin>
 	</plugins>
+
+	<resources>
+	    <resource>
+		<directory>${project.src.main}/resources</directory>
+		<filtering>false</filtering>
+	    </resource>
+	    <resource>
+		<directory>${project.src.main}/filtered-resources</directory>
+		<filtering>true</filtering>
+	    </resource>
+	</resources>
+	<testResources>
+	    <testResource>
+		<directory>${project.src.test}/resources</directory>
+		<filtering>false</filtering>
+	    </testResource>
+	    <testResource>
+		<directory>${project.src.test}/filtered-resources</directory>
+		<filtering>true</filtering>
+	    </testResource>
+	</testResources>
     </build>
 
     <dependencies>
