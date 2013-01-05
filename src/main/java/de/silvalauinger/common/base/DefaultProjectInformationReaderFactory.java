@@ -11,11 +11,10 @@ import java.nio.file.Paths;
 public final class DefaultProjectInformationReaderFactory implements Supplier<ProjectInformationReader> {
 
     //<editor-fold defaultstate="collapsed" desc="statics">
-    private final static Path MANIFEST_MF_PATH = Paths.get("META-INF/MANIFEST.MF");
+    private final static Path PROGRAM_NAME_PATH = Paths.get("PROGRAM");
+    private final static Path VERSION_PATH = Paths.get("VERSION");
     private final static Path COPYING_PATH = Paths.get("COPYING");
     private final static Path AUTHORS_PATH = Paths.get("AUTHORS");
-    private final static String MANIFEST_PROGRAM_NAME_KEY = "Implementation-Title";
-    private final static String MANIFEST_VERSION_KEY = "Implementation-Version";
     //</editor-fold>
 
     /**
@@ -25,7 +24,8 @@ public final class DefaultProjectInformationReaderFactory implements Supplier<Pr
      * These files are (relative to the project base path):
      * <code>
      * <ul>
-     * <li>META-INF/MANIFEST.MF (must have attributes "Implementation-Title" and "Implementation-Version")</li>
+     * <li>PROGRAM (must contain the program name)</li>
+     * <li>VERSION (must contain the program version)</li>
      * <li>COPYING (must contain the hint to the project license)</li>
      * <li>AUTHORS (must contain every author in a new line)</li>
      * <ul>
@@ -35,6 +35,6 @@ public final class DefaultProjectInformationReaderFactory implements Supplier<Pr
      */
     @Override
     public ProjectInformationReader get() {
-	return new ProjectInformationReader(MANIFEST_MF_PATH, COPYING_PATH, AUTHORS_PATH, MANIFEST_PROGRAM_NAME_KEY, MANIFEST_VERSION_KEY);
+	return new ProjectInformationReader(PROGRAM_NAME_PATH, VERSION_PATH, COPYING_PATH, AUTHORS_PATH);
     }
 }

@@ -7,7 +7,8 @@ import org.junit.Test;
 public class ProjectInformationReaderTest {
 
     //<editor-fold defaultstate="collapsed" desc="statics">
-    private final static String TEST_VERSION = "1.0-SNAPSHOT";
+    private final static String TEST_PROGRAM_NAME = "TESTPROGRAMNAME";
+    private final static String TEST_VERSION = "TESTVERSION";
     private final static String TEST_COPYING = "TESTCOPYING";
     private final static String[] TEST_AUTHORS = new String[]{
 	"Author1 <authormail1@domain1.tld1>",
@@ -21,5 +22,6 @@ public class ProjectInformationReaderTest {
 	assertThat(projectInformation.getVersion(), is(TEST_VERSION));
 	assertThat(projectInformation.getCopying(), is(TEST_COPYING));
 	assertThat(projectInformation.getAuthors(), contains(TEST_AUTHORS));
+	assertThat(projectInformation.getProgramName(), is(TEST_PROGRAM_NAME));
     }
 }
