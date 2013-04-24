@@ -2,7 +2,7 @@ package de.silvalauinger.ldap.ldifsort;
 
 import de.silvalauinger.common.command.CommandException;
 import de.silvalauinger.ldap.ldifsort.command.LdifSortCommandFactory;
-import static org.apache.directory.shared.util.Strings.isNotEmpty;
+import static org.apache.directory.api.util.Strings.isNotEmpty;
 
 public final class CliLdifSort {
 

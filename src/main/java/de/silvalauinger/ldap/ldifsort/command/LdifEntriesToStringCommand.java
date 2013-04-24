@@ -3,7 +3,7 @@ package de.silvalauinger.ldap.ldifsort.command;
 import static com.google.common.base.Preconditions.checkNotNull;
 import de.silvalauinger.common.command.Command;
 import de.silvalauinger.common.command.CommandException;
-import org.apache.directory.shared.ldap.model.ldif.LdifEntry;
+import org.apache.directory.api.ldap.model.ldif.LdifEntry;
 
 public class LdifEntriesToStringCommand implements Command<String> {
 

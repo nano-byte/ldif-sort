@@ -6,7 +6,7 @@ import com.google.common.collect.Ordering;
 import de.silvalauinger.common.command.Command;
 import de.silvalauinger.common.command.CommandException;
 import de.silvalauinger.ldap.ldifsort.core.LdifEntryHierarchicalDnComparator;
-import org.apache.directory.shared.ldap.model.ldif.LdifEntry;
+import org.apache.directory.api.ldap.model.ldif.LdifEntry;
 
 public class LdifSortCommand implements Command<ImmutableList<LdifEntry>> {
 

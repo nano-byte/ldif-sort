@@ -2,7 +2,7 @@ package de.silvalauinger.ldap.ldifsort.command;
 
 import com.google.common.collect.ImmutableList;
 import de.silvalauinger.common.command.CommandException;
-import org.apache.directory.shared.ldap.model.ldif.LdifEntry;
+import org.apache.directory.api.ldap.model.ldif.LdifEntry;
 
 public class LdifReverseSortCommand extends LdifSortCommand {
 

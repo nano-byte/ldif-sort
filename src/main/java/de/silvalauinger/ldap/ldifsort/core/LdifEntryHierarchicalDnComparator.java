@@ -3,8 +3,8 @@ package de.silvalauinger.ldap.ldifsort.core;
 import com.google.common.base.Function;
 import com.google.common.collect.Ordering;
 import java.util.Comparator;
-import org.apache.directory.shared.ldap.model.ldif.LdifEntry;
-import org.apache.directory.shared.ldap.model.name.Dn;
+import org.apache.directory.api.ldap.model.ldif.LdifEntry;
+import org.apache.directory.api.ldap.model.name.Dn;
 
 public enum LdifEntryHierarchicalDnComparator implements Comparator<LdifEntry> {
 

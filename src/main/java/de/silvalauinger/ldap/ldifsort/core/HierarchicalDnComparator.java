@@ -3,7 +3,7 @@ package de.silvalauinger.ldap.ldifsort.core;
 import com.google.common.collect.Ordering;
 import static java.lang.Integer.signum;
 import java.util.Comparator;
-import org.apache.directory.shared.ldap.model.name.Dn;
+import org.apache.directory.api.ldap.model.name.Dn;
 
 public enum HierarchicalDnComparator implements Comparator<Dn> {
 

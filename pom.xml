@@ -28,10 +28,13 @@
 	    <plugin>
 		<groupId>org.apache.maven.plugins</groupId>
 		<artifactId>maven-compiler-plugin</artifactId>
-		<version>3.0</version>
+		<version>3.1</version>
 		<configuration>
 		    <source>${project.build.javaVersion}</source>
 		    <target>${project.build.javaVersion}</target>
+                    <compilerArguments>
+                        <Xlint />
+                    </compilerArguments>
 		</configuration>
 	    </plugin>
 	    <!-- create jar containing dependencies -->
@@ -128,9 +131,9 @@
     <dependencies>
 	<!-- compile dependencies -->
 	<dependency>
-	    <groupId>org.apache.directory.shared</groupId>
-	    <artifactId>shared-ldap-model</artifactId>
-	    <version>1.0.0-M13</version>
+	    <groupId>org.apache.directory.api</groupId>
+	    <artifactId>api-ldap-model</artifactId>
+	    <version>1.0.0-M16</version>
 	</dependency>
 	<dependency>
 	    <groupId>com.martiansoftware</groupId>
@@ -140,13 +143,13 @@
 	<dependency>
 	    <groupId>com.google.guava</groupId>
 	    <artifactId>guava</artifactId>
-	    <version>13.0.1</version>
+	    <version>14.0.1</version>
 	</dependency>
 	<!-- runtime dependencies -->
 	<dependency>
 	    <groupId>org.slf4j</groupId>
 	    <artifactId>slf4j-nop</artifactId>
-	    <version>1.7.2</version>
+	    <version>1.7.5</version>
 	</dependency>
 	<!-- test dependencies -->
 	<dependency>

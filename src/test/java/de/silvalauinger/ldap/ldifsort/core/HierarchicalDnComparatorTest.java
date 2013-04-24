@@ -2,8 +2,8 @@ package de.silvalauinger.ldap.ldifsort.core;
 
 import static com.google.common.collect.Lists.newArrayList;
 import java.util.List;
-import org.apache.directory.shared.ldap.model.exception.LdapInvalidDnException;
-import org.apache.directory.shared.ldap.model.name.Dn;
+import org.apache.directory.api.ldap.model.exception.LdapInvalidDnException;
+import org.apache.directory.api.ldap.model.name.Dn;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.junit.runner.RunWith;
