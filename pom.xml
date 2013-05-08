@@ -59,7 +59,7 @@
                 <version>1.0.5</version>
                 <configuration>
                     <outputDir>${project.build.directory}/classes</outputDir>
-                    <noticeTemplate>NOTICE.template</noticeTemplate>
+                    <noticeTemplate>${project.src.main}/misc/NOTICE.template</noticeTemplate>
                 </configuration>
                 <executions>
                     <execution>
