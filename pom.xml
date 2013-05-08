@@ -2,13 +2,13 @@
 	 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>de.silvalauinger.ldap.tools</groupId>
+    <groupId>de.nanobyte.ldap.ldif</groupId>
     <artifactId>ldif-sort</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Ldif Sort</name>
-    <url>https://code.google.com/p/ldifsort/</url>
+    <url>https://bitbucket.org/nanobyte/ldif-sort/</url>
     <licenses>
 	<license>
 	    <name>GNU GPL v3</name>
@@ -50,8 +50,8 @@
 			<manifest>
 			    <!-- Use JarClassLoader until http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4648386 is fixed.
 			    Then remove CliLdifSortLauncher and JarClassLoader and just use CliLdifSort instead. -->
-			    <!--mainClass>de.silvalauinger.ldap.ldifsort.CliLdifSortLauncher</mainClass-->
-			    <mainClass>de.silvalauinger.ldap.ldifsort.CliLdifSortLauncher</mainClass>
+			    <!--mainClass>de.silvalauinger.ldap.ldif.sort.CliLdifSort</mainClass-->
+			    <mainClass>de.nanobyte.ldap.ldif.sort.CliLdifSortLauncher</mainClass>
 			    <classpathPrefix>lib</classpathPrefix>
 			    <addClasspath>true</addClasspath>
 			    <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
