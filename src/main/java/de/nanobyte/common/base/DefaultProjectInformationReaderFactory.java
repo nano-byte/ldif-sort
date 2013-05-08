@@ -4,10 +4,6 @@ import com.google.common.base.Supplier;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-/**
- * @author <a href="mailto:simonsilvalauinger@gmail.com">Simon E. Silva
- * Lauinger</a>
- */
 public final class DefaultProjectInformationReaderFactory implements Supplier<ProjectInformationReader> {
 
     //<editor-fold defaultstate="collapsed" desc="statics">

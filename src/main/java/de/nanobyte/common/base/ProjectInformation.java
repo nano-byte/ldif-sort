@@ -7,9 +7,6 @@ import java.util.List;
 /**
  * This class is a container for some basic project information like the project
  * version, the copying information and the project authors.
- *
- * @author <a href="mailto:simonsilvalauinger@gmail.com">Simon E. Silva
- * Lauinger</a>
  */
 public final class ProjectInformation {
 

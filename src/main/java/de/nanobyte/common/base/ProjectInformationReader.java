@@ -8,10 +8,6 @@ import static com.google.common.io.Resources.*;
 import java.io.IOException;
 import java.nio.file.Path;
 
-/**
- * @author <a href="mailto:simonsilvalauinger@gmail.com">Simon E. Silva
- * Lauinger</a>
- */
 public final class ProjectInformationReader {
 
     //<editor-fold defaultstate="collapsed" desc="attributes">
