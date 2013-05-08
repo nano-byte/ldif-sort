@@ -132,6 +132,7 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-nop</artifactId>
             <version>1.7.5</version>
+            <scope>runtime</scope>
         </dependency>
         <!-- test dependencies -->
         <dependency>
