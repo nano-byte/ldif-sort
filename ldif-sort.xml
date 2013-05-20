@@ -3,14 +3,14 @@
     <name>Ldif Sort</name>
     <summary>Maven artifact de.nanobyte.ldap.ldif:ldif-sort</summary>
     <homepage>https://bitbucket.org/nanobyte/ldif-sort/</homepage>
-    <implementation id="1.0-SNAPSHOT" version="1.0-pre" stability="stable" license="GNU GPL v3" local-path="target">
+    <implementation id="1.0" version="1.0" stability="stable" license="GNU GPL v3" local-path="target">
         <requires interface="http://repo.roscidus.com/java/openjdk-jre" version="1.7.."/>
         <requires interface="http://maven.0install.net/org/apache/directory/api/api-ldap-model/" version="1.0.0-pre1-17"/>
         <requires interface="http://maven.0install.net/com/martiansoftware/jsap/" version="2.1"/>
         <requires interface="http://maven.0install.net/com/google/guava/guava/" version="14.0.1"/>
         <requires interface="http://maven.0install.net/org/slf4j/slf4j-nop/" version="1.7.5"/>
-        <environment name="CLASSPATH" insert="ldif-sort-1.0-SNAPSHOT.jar"/>
-        <command name="run" path="ldif-sort-1.0-SNAPSHOT.jar">
+        <environment name="CLASSPATH" insert="ldif-sort-1.0.jar"/>
+        <command name="run" path="ldif-sort-1.0.jar">
             <runner interface="http://0install.de/feeds/jar-launcher.xml"/>
         </command>
     </implementation>
