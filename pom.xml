@@ -7,7 +7,7 @@
     <packaging>jar</packaging>
 
     <name>Ldif Sort</name>
-    <url>https://bitbucket.org/nanobyte/ldif-sort/</url>
+    <url>https://github.com/nano-byte/ldif-sort</url>
     <licenses>
         <license>
             <name>GNU GPL v3</name>
@@ -15,9 +15,9 @@
         </license>
     </licenses>
     <scm>
-	<url>https://bitbucket.org/nanobyte/ldif-sort/src</url>
-	<connection>scm:hg:ssh://hg@bitbucket.org/nanobyte/ldif-sort</connection>
-	<developerConnection>scm:hg:ssh://hg@bitbucket.org/nanobyte/ldif-sort</developerConnection>
+	<url>https://github.com/nano-byte/ldif-sort</url>
+	<connection>scm:git:ssh://git@github.com/nano-byte/ldif-sort</connection>
+	<developerConnection>scm:git:ssh://git@github.com/nano-byte/ldif-sort</developerConnection>
     </scm>
 
     <properties>
