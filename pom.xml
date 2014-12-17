@@ -49,7 +49,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>de.nanobyte.ldap.ldif.sort.CliLdifSort</mainClass>
+                            <mainClass>de.nanobyte.ldap.ldif.sort.LdifSort</mainClass>
                             <addClasspath>true</addClasspath>
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                         </manifest>
