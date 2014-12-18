@@ -1,8 +1,8 @@
 package de.nanobyte.common.base;
 
-import com.google.common.base.Supplier;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.function.Supplier;
 
 public final class DefaultProjectInformationReaderFactory implements Supplier<ProjectInformationReader> {
 
