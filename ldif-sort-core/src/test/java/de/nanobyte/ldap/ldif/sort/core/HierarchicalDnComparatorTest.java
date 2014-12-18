@@ -1,7 +1,8 @@
 package de.nanobyte.ldap.ldif.sort.core;
 
-import static com.google.common.collect.Lists.newArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import org.apache.directory.api.ldap.model.exception.LdapInvalidDnException;
 import org.apache.directory.api.ldap.model.name.Dn;
 import static org.junit.Assert.assertEquals;
@@ -25,7 +26,7 @@ public class HierarchicalDnComparatorTest {
 
     @Parameters
     public static List<Object[]> data() {
-	return newArrayList(
+	return Stream.of(
 		/* compare(x, x) == 0 */
 		new Object[]{"dn=x", "dn=x", 0},
 		/* sgn(compare(x, y)) == -sgn(compare(x, y)) */
@@ -43,9 +44,9 @@ public class HierarchicalDnComparatorTest {
 		/* dn with more rdns, but same base is smaller */
 		new Object[]{"dn=x, dn=y, dn=z", "dn=x,dn=y", 1},
 		/* dn with less rdns, but same base is bigger */
-		new Object[]{"dn=x, dn=y", "dn=x,dn=y, dn=z", -1});
+		new Object[]{"dn=x, dn=y", "dn=x,dn=y, dn=z", -1}).collect(Collectors.<Object[]>toList());
     }
-
+    
     @Test
     public void testCompare() {
 	assertEquals(expectedCompareResult, HierarchicalDnComparator.INSTANCE.compare(left, right));
