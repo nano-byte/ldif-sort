@@ -1,8 +1,7 @@
 package de.nanobyte.common.base;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-import com.google.common.collect.ImmutableList;
-import java.util.List;
+import java.util.*;
+import static java.util.Objects.requireNonNull;
 
 /**
  * This class is a container for some basic project information like the project
@@ -14,31 +13,31 @@ public final class ProjectInformation {
     private final String programName;
     private final String version;
     private final String copying;
-    private final ImmutableList<String> authors;
+    private final List<String> authors;
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="constructors">
-    public ProjectInformation(final String programName, final String version, final String copying, final List<String> authors) {
-	this.programName = checkNotNull(programName);
-	this.version = checkNotNull(version);
-	this.copying = checkNotNull(copying);
-	this.authors = ImmutableList.copyOf(authors);
+    public ProjectInformation(final String programName, final String version, final String copying, final Collection<String> authors) {
+        this.programName = requireNonNull(programName);
+        this.version = requireNonNull(version);
+        this.copying = requireNonNull(copying);
+        this.authors = Collections.unmodifiableList(new ArrayList<>(requireNonNull(authors)));
     }
     //</editor-fold>
 
     public String getProgramName() {
-	return programName;
+        return programName;
     }
 
     public String getVersion() {
-	return version;
+        return version;
     }
 
     public String getCopying() {
-	return copying;
+        return copying;
     }
 
-    public ImmutableList<String> getAuthors() {
-	return authors;
+    public List<String> getAuthors() {
+        return authors;
     }
 }
