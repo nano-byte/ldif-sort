@@ -5,7 +5,7 @@ import de.nanobyte.common.command.CommandException;
 import de.nanobyte.ldap.ldif.sort.cli.command.LdifSortCommandFactory;
 import static org.apache.directory.api.util.Strings.isNotEmpty;
 
-public final class CliLdifSort {
+public final class Main {
 
     public static void main(final String[] arguments) {
         try {
