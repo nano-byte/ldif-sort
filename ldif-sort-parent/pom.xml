@@ -22,7 +22,6 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.build.javaVersion>1.8</project.build.javaVersion>
         <project.src.main>${basedir}/src/main</project.src.main>
         <project.src.test>${basedir}/src/test</project.src.test>
     </properties>
@@ -34,8 +33,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <source>${project.build.javaVersion}</source>
-                    <target>${project.build.javaVersion}</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <compilerArguments>
                         <Xlint />
                     </compilerArguments>
