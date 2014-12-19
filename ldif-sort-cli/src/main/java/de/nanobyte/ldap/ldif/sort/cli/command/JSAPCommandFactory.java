@@ -1,20 +1,15 @@
 package de.nanobyte.ldap.ldif.sort.cli.command;
 
-import com.google.common.base.Function;
-import static com.google.common.base.Throwables.propagate;
-import com.google.common.collect.Maps;
-import com.martiansoftware.jsap.JSAP;
-import com.martiansoftware.jsap.JSAPException;
-import com.martiansoftware.jsap.JSAPResult;
-import com.martiansoftware.jsap.Parameter;
+import com.martiansoftware.jsap.*;
 import de.nanobyte.common.command.Association;
 import de.nanobyte.common.command.Command;
 import java.util.HashMap;
+import java.util.function.Function;
 
 public abstract class JSAPCommandFactory<TCommandResult> {
 
     //<editor-fold defaultstate="collapsed" desc="attributes">
-    protected final HashMap<? super Parameter, Function<JSAPResult, ? extends Command<TCommandResult>>> commands = Maps.newHashMap();
+    protected final HashMap<? super Parameter, Function<JSAPResult, ? extends Command<TCommandResult>>> commands = new HashMap<>();
     protected final JSAP cliParser = new JSAP();
     protected JSAPResult parseResult;
     //</editor-fold>
@@ -25,7 +20,7 @@ public abstract class JSAPCommandFactory<TCommandResult> {
 		commands.put(association.getKey(), association.getValue());
 		cliParser.registerParameter(association.getKey());
 	    } catch (final JSAPException exception) {
-		throw propagate(exception);
+		throw new RuntimeException(exception);
 	    }
 	}
     }
