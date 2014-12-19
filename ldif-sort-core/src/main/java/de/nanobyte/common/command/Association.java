@@ -1,6 +1,6 @@
 package de.nanobyte.common.command;
 
-import static com.google.common.base.Preconditions.checkNotNull;
+import static java.util.Objects.requireNonNull;
 
 public final class Association<TKey, TValue> {
 
@@ -8,8 +8,8 @@ public final class Association<TKey, TValue> {
     private final TValue value;
 
     Association(final TKey key, final TValue value) {
-	this.key = checkNotNull(key);
-	this.value = checkNotNull(value);
+	this.key = requireNonNull(key);
+	this.value = requireNonNull(value);
     }
 
     public TKey getKey() {
