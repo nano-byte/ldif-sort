@@ -2,24 +2,19 @@ package de.nanobyte.ldap.ldif.sort.core;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSet.Builder;
-import static com.google.common.collect.Iterables.size;
 import java.io.File;
 import static java.lang.String.format;
 import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import org.apache.directory.api.ldap.model.ldif.LdapLdifException;
-import org.apache.directory.api.ldap.model.ldif.LdifEntry;
-import org.apache.directory.api.ldap.model.ldif.LdifReader;
+import java.util.*;
+import org.apache.directory.api.ldap.model.ldif.*;
 import org.apache.directory.api.ldap.model.name.Dn;
 
 public final class LdifFilesReader implements Iterable<LdifEntry> {
 
     private final ImmutableSet<LdifEntry> ldifEntries;
 
-    public LdifFilesReader(final Iterable<File> ldifFiles) throws LdapLdifException {
-	final int guessedDnSize = size(ldifFiles) * 100;
+    public LdifFilesReader(final Collection<File> ldifFiles) throws LdapLdifException {
+	final int guessedDnSize = ldifFiles.size() * 100;
 	final Builder<LdifEntry> ldifEntriesBuilder = ImmutableSet.builder();
 	final Map<Dn, Path> takenDns = new HashMap<>(guessedDnSize);
 
