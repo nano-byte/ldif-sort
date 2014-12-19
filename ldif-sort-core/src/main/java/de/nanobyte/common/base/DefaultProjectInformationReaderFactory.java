@@ -24,7 +24,7 @@ public final class DefaultProjectInformationReaderFactory implements Supplier<Pr
      * <li>VERSION (must contain the program version)</li>
      * <li>COPYING (must contain the hint to the project license)</li>
      * <li>AUTHORS (must contain every author in a new line)</li>
-     * <ul>
+     * </ul>
      * </code>
      *
      * @return The generated {@link ProjectInformationReader}.
