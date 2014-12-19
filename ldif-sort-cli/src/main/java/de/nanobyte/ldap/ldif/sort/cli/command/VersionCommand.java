@@ -7,6 +7,7 @@ import de.nanobyte.common.command.Command;
 import de.nanobyte.common.command.CommandException;
 import java.io.IOException;
 import static java.lang.System.lineSeparator;
+import org.apache.commons.lang.text.StrBuilder;
 
 public final class VersionCommand implements Command<String> {
 
@@ -14,15 +15,11 @@ public final class VersionCommand implements Command<String> {
     public String execute() throws CommandException {
 	try {
 	    final ProjectInformation read = new DefaultProjectInformationReaderFactory().get().read();
-	    final StringBuilder versionBuilder = new StringBuilder()
-		    .append(read.getProgramName()).append(" ").append(read.getVersion()).append(lineSeparator())
-		    .append(read.getCopying()).append(lineSeparator()).append(lineSeparator())
-		    .append("Authors: ").append(lineSeparator());
-	    for (final String author : read.getAuthors()) {
-		versionBuilder.append(author).append(lineSeparator());
-	    }
-
-	    return versionBuilder.toString();
+            return new StrBuilder()
+		    .append(read.getProgramName()).append(" ").appendln(read.getVersion())
+		    .appendln(read.getCopying()).appendNewLine()
+		    .appendln("Authors: ")
+                    .appendWithSeparators(read.getAuthors(), lineSeparator()).toString();
 	} catch (final IOException exception) {
 	    throw propagate(exception);
 	}
