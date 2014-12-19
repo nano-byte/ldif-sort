@@ -1,9 +1,9 @@
 package de.nanobyte.ldap.ldif.sort.cli.command;
 
-import static com.google.common.base.Preconditions.checkNotNull;
 import com.martiansoftware.jsap.JSAP;
 import de.nanobyte.common.command.Command;
 import de.nanobyte.common.command.CommandException;
+import static java.util.Objects.requireNonNull;
 
 public class UsageTextCommand implements Command<String> {
 
@@ -13,7 +13,7 @@ public class UsageTextCommand implements Command<String> {
 
     //<editor-fold defaultstate="collapsed" desc="constructors">
     public UsageTextCommand(final JSAP cliParser) {
-        this.usageText = "Usage: " + checkNotNull(cliParser).getUsage();
+        this.usageText = "Usage: " + requireNonNull(cliParser).getUsage();
     }
     //</editor-fold>
 
